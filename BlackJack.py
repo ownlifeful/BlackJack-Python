@@ -40,16 +40,7 @@ class Deck:
                 self.cards.append( Card(suite,rank) )
 
     def shuffle(self):
-            for c in self.cards:
-                l = len(self.cards)
-                print ("There are %d cards in the deck." %(l))
-                x = random.randint(0,l - 1)
-                y = random.randint(0,l - 1)
-                # print ("%d:%d"%(x,y))
-                tmp = self.cards[x]
-                self.cards[x] = self.cards[y]
-                self.cards[y] = tmp
-
+        random.shuffle(self.cards)
 
     def output(self):
         for card in self.cards:
@@ -172,13 +163,14 @@ while playing:
     deck = Deck()
     deck.shuffle()
     deck.output()
+    
     bet = player.get_bet()
     player.reduce_balance(bet)
 
-    player.take_card( deck.get_next_card())
-    dealer.take_card( deck.get_next_card())
-    player.take_card( deck.get_next_card())
-    dealer.take_card( deck.get_next_card())
+    player.take_card( deck.get_next_card() )
+    dealer.take_card( deck.get_next_card() )
+    player.take_card( deck.get_next_card() )
+    dealer.take_card( deck.get_next_card() )
 
     player.show_stats()
     dealer.show_stats()
